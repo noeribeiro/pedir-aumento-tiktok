@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Só um aumentinho</title>
+    <title>Só um aumentinho pro Gardobond aqui (Noé)</title>
     <style>
         * {
             margin: 0;
@@ -77,6 +77,7 @@
         #neg {
             background: linear-gradient(145deg, rgb(219, 5, 5), rgb(249, 65, 65));
             box-shadow: 0 0 20px rgb(255, 0, 0);
+            position: relative;
         }
 
         video {
@@ -105,8 +106,8 @@
 <body>
     <video src="./Rain-Background.mp4" autoplay loop muted></video>
     <img src="./mendigo-pica-pau.webp" alt="">
-    <h1>Olá, chefe</h1>
-    <p>O senhor poderia, por gentileza,<br> me dar um aumento?</p>
+    <h1>Olá, Cícero!</h1>
+    <p>Chefe, senhor poderia por gentileza,<br> me dar um aumento?</p>
 
     <div class="botoes">
         <a href="./obrigado.html"><button id="pos">CLARO, MEU MELHOR FUNCIONÁRIO</button></a>
@@ -115,12 +116,22 @@
 
     <script>
         const botao = document.querySelector('#neg');
-        botao.addEventListener("mouseover", function () {
-            const moveX = (Math.random() * 601 - 300);
-            const moveY = (Math.random() * 301 - 150);
-            botao.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
+
+        function moverBotao() {
+            const maxX = window.innerWidth - botao.offsetWidth - 20;
+            const maxY = window.innerHeight - botao.offsetHeight - 20;
+            const moveX = Math.random() * maxX;
+            const moveY = Math.random() * maxY;
+            
+            botao.style.position = 'absolute';
+            botao.style.left = `${moveX}px`;
+            botao.style.top = `${moveY}px`;
+        }
+
+        // Funciona no PC e no celular:
+        botao.addEventListener('mouseover', moverBotao);
+        botao.addEventListener('touchstart', moverBotao);
+        botao.addEventListener('click', moverBotao);
     </script>
 </body>
 </html>
-
