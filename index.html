@@ -1,97 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Só um aumentinho</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: black;
+            overflow: hidden;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        img {
+            width: 80%;
+            max-width: 400px;
+            height: auto;
+            margin-top: 10vh;
+        }
+
+        h1 {
+            color: rgb(255, 190, 26);
+            font-size: clamp(32px, 8vw, 64px);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+            text-shadow: 0 0 8px black;
+            margin-top: -2vh;
+        }
+
+        p {
+            color: white;
+            font-size: clamp(16px, 4vw, 32px);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 700;
+            text-shadow: 0 0 6px black;
+            margin: 1rem 1rem 0;
+        }
+
+        .botoes {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        button {
+            width: clamp(160px, 40vw, 250px);
+            background: linear-gradient(145deg, rgb(13, 60, 190), rgb(22, 123, 231));
+            color: white;
+            height: 50px;
+            font-weight: bold;
+            font-size: clamp(14px, 3vw, 16px);
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgb(12, 76, 196);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #pos:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgb(1, 90, 255);
+        }
+
+        #neg {
+            background: linear-gradient(145deg, rgb(219, 5, 5), rgb(249, 65, 65));
+            box-shadow: 0 0 20px rgb(255, 0, 0);
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        @media (max-width: 480px) {
+            img {
+                margin-top: 5vh;
+            }
+
+            .botoes {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <video src="./Rain-Background.mp4" autoplay loop muted></video>
     <img src="./mendigo-pica-pau.webp" alt="">
-    <h1 style="color: rgb(255, 190, 26); font-size: 64px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 0.5px; font-weight: 400; translate: 0 -50px; text-shadow: 0 0 8px black;">Olá, chefe</h1>
-    <p style="color: white; font-size: 32px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; translate: 0 -55px; font-weight: 700; text-shadow: 0 0 6px black; text-align: center;">O senhor poderia, por gentileza,<br> me dar um aumento?</p>
+    <h1>Olá, chefe</h1>
+    <p>O senhor poderia, por gentileza,<br> me dar um aumento?</p>
+
     <div class="botoes">
-
-        <a href="./obrigado.html"><button id="pos" style="cursor: pointer;">CLARO, MEU MELHOR FUNCIONÁRIO</button></a>
-        <button id="neg" style="background: linear-gradient(145deg, rgb(219, 5, 5), rgb(249, 65, 65)); box-shadow: 0 0 20px rgb(255, 0, 0);">NÃO</button>
-
+        <a href="./obrigado.html"><button id="pos">CLARO, MEU MELHOR FUNCIONÁRIO</button></a>
+        <button id="neg">NÃO</button>
     </div>
 
-    <video src="./Rain-Background.mp4" autoplay loop></video>
-
+    <script>
+        const botao = document.querySelector('#neg');
+        botao.addEventListener("mouseover", function () {
+            const moveX = (Math.random() * 601 - 300);
+            const moveY = (Math.random() * 301 - 150);
+            botao.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
 </body>
 </html>
 
-<style>
-
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        background-color: black;
-        overflow: hidden;
-    }
-
-    img {
-        width: 400px;
-        height: auto;
-        margin-top: 80px;
-    }
-
-    button {
-        width: 250px;
-        background-color: black;
-        color: white;
-        height: 50px;
-        font-weight: bold;
-        font-size: 16px;
-        background: linear-gradient(145deg, rgb(13, 60, 190), rgb(22, 123, 231));
-        border: none;
-        box-shadow: 0 0 20px rgb(12, 76, 196);
-        transition: 0.3s;
-    }
-
-    #pos:hover {
-        transform: scale(1.2);
-        box-shadow: 0 0 60px rgb(1, 90, 255);
-        transition: 0.5s;
-    }
-
-    .botoes {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: -30px;
-    }
-
-    video {
-        position: absolute;
-        width: 100vw;
-        height: auto;
-        z-index: -1;
-        opacity: 0.4;
-    }
-
-
-</style>
-
-<script>
-
-const botao = document.querySelector('#neg');
-
-let moveX = 0;
-let moveY = 0;
-
-botao.addEventListener("mouseover", function () {
-    moveX = (Math.random() * 801 - 400); //gera um número entre -400 e 400 para atribuir ao movimento no eixo X do botão (esse valor é ideal pro botão não sumir da tela nessas proporções desse código, mas pode mudar conforme você faça sua tela)
-    moveY = (Math.random() * 401 - 400); //aqui é o mesmo esquema de random, mas é de -400 a 0, respeitando o valor pra não sumir da tela, que acaba tendo um limite diferente do eixo X
-
-    botao.style.transform = `translate(${moveX}px, ${moveY}px)`; //atribui os valores randomicos ao botão aplicando um translate no css dele
-})
-
-</script>
